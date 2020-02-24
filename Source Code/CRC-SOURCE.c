@@ -3,8 +3,7 @@
 #include "string.h"
 #include "math.h"
 #include "windows.h"
-
-#define SIZE 100000000000000
+#define SIZE 1000000000
 
 void append_degree();
 void get_data();
@@ -14,7 +13,7 @@ void get_crc();
 void xor_add(char[],int);
 
 char data[SIZE],data2[SIZE],rem[SIZE];
-int len,len2,i;
+int len,len2;
 
 int main()
 {
@@ -28,14 +27,14 @@ int main()
 		 get_crc();
 	 }
 
-	system("pause");
+ system("pause");
  return 0;
 }
 
 
 void get_data()
 {
- i=0;
+ int i;
  printf("Enter Data to be transferred : ");
  scanf("%s",&data);
 
@@ -52,7 +51,7 @@ void print_data()
 
 int check_data()
 {
-	i=0;
+int i;
 	
   for(i=0;i<strlen(data);i++)
   if(data[i]>49)
@@ -73,8 +72,7 @@ int check_data()
 
 void append_degree()
 {
-	i=0;
-	
+int i;
 	for(i=0;i<len2 - 1;i++)
 	strcat(data,"0");
 	
@@ -83,13 +81,13 @@ void append_degree()
 
 void get_crc()
 {
-	i=0;
+int i;
 	for(i=0;i<len2;i++)
 	rem[i] = data[i];
 	
 	xor_add(rem,(rem[0]=='1'?1:0));
 
-	for(i=0;i<(len-len2);i++)
+	for(i=0;i<len-len2;i++)
 	{
 		sprintf(rem,"%s%c",rem,data[i+len2]);
 		xor_add(rem,(rem[0]=='1'?1:0));
@@ -100,7 +98,7 @@ void get_crc()
 
 void xor_add(char temp[],int choice)
 {
-	i=0;
+int i;
 	char crc_temp[100]={"\0"};
 	if(choice==1)
 	{
@@ -112,6 +110,5 @@ void xor_add(char temp[],int choice)
 		for(i=1;i<len2;i++) //change to 0 for full remainder ONLY USE FOR DEBUG END RESULT WOULD BE DIFFERENT
 		sprintf(crc_temp,"%s%d",crc_temp,(temp[i]-48)^0);
 	}
-
 	strcpy(rem,crc_temp);
 }
