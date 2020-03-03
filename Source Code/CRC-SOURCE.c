@@ -3,7 +3,7 @@
 #include "string.h"
 #include "math.h"
 #include "windows.h"
-#define SIZE 1000000000
+#define SIZE 1000
 
 void append_degree();
 void get_data();
