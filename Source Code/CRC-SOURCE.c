@@ -39,7 +39,7 @@ void get_data()
  gets(data);
 
  printf("Enter Division data : ");
- scanf("%s",&data2);
+ gets(data2);
 
  len2 = strlen(data2);
 }
@@ -101,14 +101,12 @@ void xor_add(char temp[],int choice)
 int i;
 	char crc_temp[100]={"\0"};
 	if(choice==1)
-	{
-		for(i=1;i<len2;i++) //change to 0 for full remainder ONLY USE FOR DEBUG END RESULT WOULD BE DIFFERENT
+	for(i=1;i<len2;i++) //change to 0 for full remainder ONLY USE FOR DEBUG END RESULT WOULD BE DIFFERENT
 		sprintf(crc_temp,"%s%d",crc_temp,(temp[i]-48)^(data2[i]-48));
-	}
+	
 	else
-	{
-		for(i=1;i<len2;i++) //change to 0 for full remainder ONLY USE FOR DEBUG END RESULT WOULD BE DIFFERENT
+	for(i=1;i<len2;i++) //change to 0 for full remainder ONLY USE FOR DEBUG END RESULT WOULD BE DIFFERENT
 		sprintf(crc_temp,"%s%d",crc_temp,(temp[i]-48)^0);
-	}
+	
 	strcpy(rem,crc_temp);
 }
