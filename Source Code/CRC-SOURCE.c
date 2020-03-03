@@ -36,7 +36,7 @@ void get_data()
 {
  int i;
  printf("Enter Data to be transferred : ");
- scanf("%s",&data);
+ gets(data);
 
  printf("Enter Division data : ");
  scanf("%s",&data2);
